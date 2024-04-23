@@ -177,7 +177,7 @@ def _load_defaults(
         # listtasks=False,
         # listhosts=False,
         syntax=False,
-        # connection="ssh",
+        connection="ssh",
         # module_path=None,
         # forks=forks,
         # private_key_file=None,
