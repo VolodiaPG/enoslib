@@ -170,30 +170,30 @@ def _load_defaults(
     # NOTE(msimonin): The ansible api is "low level" in the
     # sense that we are redefining here all the default values
     # that are usually enforce by ansible called from the cli
-    context.CLIARGS = ImmutableDict(
-        start_at_task=None,
-        listtags=False,
-        listtasks=False,
-        listhosts=False,
-        syntax=False,
-        connection="ssh",
-        # module_path=None,
-        forks=forks,
-        private_key_file=None,
-        ssh_common_args=None,
-        ssh_extra_args=None,
-        sftp_extra_args=None,
-        scp_extra_args=None,
-        become=False,
-        become_method="sudo",
-        become_user="root",
-        remote_user=None,
-        # verbosity=3,
-        check=False,
-        tags=tags,
-        diff=None,
-        basedir=basedir,
-    )
+    # context.CLIARGS = context.CLIARGS + ImmutableDict(
+    #    start_at_task=None,
+    #    listtags=False,
+    #    listtasks=False,
+    #    listhosts=False,
+    #    syntax=False,
+    #    connection="ssh",
+    #    # module_path=None,
+    #    forks=forks,
+    #    private_key_file=None,
+    #    ssh_common_args=None,
+    #    ssh_extra_args=None,
+    #    sftp_extra_args=None,
+    #    scp_extra_args=None,
+    #    become=False,
+    #    become_method="sudo",
+    #    become_user="root",
+    #    remote_user=None,
+    #    # verbosity=3,
+    #    check=False,
+    #    tags=tags,
+    #    diff=None,
+    #    basedir=basedir,
+    # )
 
     return inventory, variable_manager, loader
 
