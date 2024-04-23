@@ -14,6 +14,7 @@ These function can be fed with library-level objects (see :ref:`objects
     .. [#a1] https://docs.ansible.com/ansible/latest/index.html
 
 """
+
 import copy
 import json
 import logging
@@ -175,20 +176,20 @@ def _load_defaults(
         listtasks=False,
         listhosts=False,
         syntax=False,
-        connection="ssh",
-        module_path=None,
+        # connection="ssh",
+        # module_path=None,
         forks=forks,
         private_key_file=None,
-        ssh_common_args=None,
-        ssh_extra_args=None,
-        sftp_extra_args=None,
-        scp_extra_args=None,
-        become=False,
+        # ssh_common_args=None,
+        # ssh_extra_args=None,
+        # sftp_extra_args=None,
+        # scp_extra_args=None,
+        # become=False,
         become_method="sudo",
         become_user="root",
         remote_user=None,
-        verbosity=2,
-        check=False,
+        # verbosity=3,
+        # check=False,
         tags=tags,
         diff=None,
         basedir=basedir,
@@ -318,7 +319,6 @@ class SpinnerCallback(CallbackBase):
 
 
 class _MyCallback(CallbackBase):
-
     CALLBACK_VERSION = 2.0
     CALLBACK_NAME = "mycallback"
 
@@ -370,8 +370,7 @@ class BaseCommandResult:
     payload: Dict
 
     @abstractmethod
-    def _payload_keys(self):
-        ...
+    def _payload_keys(self): ...
 
     def ok(self) -> bool:
         return self.status == STATUS_OK
@@ -733,7 +732,6 @@ class actions:
         strategy: str = "linear",
         **kwargs,
     ):
-
         self.pattern_hosts = pattern_hosts
         self.inventory_path = inventory_path
         self.roles = roles
@@ -1229,20 +1227,19 @@ def _sync_from_facts(roles: Roles, networks: Networks, facts: Dict) -> Roles:
 @overload
 def sync_info(
     roles: Roles, networks: Networks, inplace: bool = False, **kwargs
-) -> Roles:
-    ...
+) -> Roles: ...
 
 
 @overload
-def sync_info(roles: Host, networks: Networks, inplace: bool = False, **kwargs) -> Host:
-    ...
+def sync_info(
+    roles: Host, networks: Networks, inplace: bool = False, **kwargs
+) -> Host: ...
 
 
 @overload
 def sync_info(
     roles: Iterable[Host], networks: Networks, inplace: bool = False, **kwargs
-) -> Iterable[Host]:
-    ...
+) -> Iterable[Host]: ...
 
 
 def sync_info(
